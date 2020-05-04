@@ -55,7 +55,7 @@ class iso _TestApple2 is UnitTest
 
       URLDownload.get("http://lakdhsbgfklwsadbhfd.com/SBjCQX7Lh2Q/lkjdafbgojbds.jpg", {(result:URLDownloadResult val) =>        
         match result
-        | let err:URLDownloadError val => Log.println("error: %s", err); h.complete(true)
+        | let err:URLDownloadError val => h.complete(err == "A server with the specified hostname could not be found.")
         | let _:Array[U8] val => h.complete(false)
         end
       })

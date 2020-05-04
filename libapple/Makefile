@@ -29,13 +29,13 @@ check:
 	@mkdir -p $(includedir_osx)
 
 osx:
-	cd $(builddir_osx) && $(clang_osx) -O3 -c ../../src/*.m -I../../src/ -arch x86_64 -isysroot $(isysroot_osx)
+	cd $(builddir_osx) && $(clang_osx) -O3 -c ../../src/*.m -I../../src/ -I../../../build/ -arch x86_64 -isysroot $(isysroot_osx)
 	@$(libtool_osx) -static $(builddir_osx)/*.o -o $(libdir_osx)/libapple.a
 	cp src/*.h $(includedir_osx)/
 	rm $(builddir_osx)/*.o
 
 ios:
-	cd $(builddir_ios) && $(clang_ios) -O3 -c ../../src/*.m -I../../src/ -arch arm64 -isysroot $(isysroot_ios)
+	cd $(builddir_ios) && $(clang_ios) -O3 -c ../../src/*.m -I../../src/ -I../../../build/ -arch arm64 -isysroot $(isysroot_ios)
 	@$(libtool_ios) -static $(builddir_ios)/*.o -o $(libdir_ios)/libapple.a
 	cp src/*.h $(includedir_ios)/
 	rm $(builddir_ios)/*.o

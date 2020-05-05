@@ -15,6 +15,10 @@
 		4640501B24609A1A00D810D2 /* libapple.m in Sources */ = {isa = PBXBuildFile; fileRef = 46404FF9246076A100D810D2 /* libapple.m */; };
 		4640501C24609A1A00D810D2 /* URLDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 46404FFA246076A100D810D2 /* URLDownload.m */; };
 		4640501D24609A2200D810D2 /* apple.h in Headers */ = {isa = PBXBuildFile; fileRef = 46404FFD246076DB00D810D2 /* apple.h */; };
+		464050202461028C00D810D2 /* atomics.h in Headers */ = {isa = PBXBuildFile; fileRef = 4640501E2461028C00D810D2 /* atomics.h */; };
+		464050212461028C00D810D2 /* atomics.h in Headers */ = {isa = PBXBuildFile; fileRef = 4640501E2461028C00D810D2 /* atomics.h */; };
+		464050222461028C00D810D2 /* pony.h in Headers */ = {isa = PBXBuildFile; fileRef = 4640501F2461028C00D810D2 /* pony.h */; };
+		464050232461028C00D810D2 /* pony.h in Headers */ = {isa = PBXBuildFile; fileRef = 4640501F2461028C00D810D2 /* pony.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,8 @@
 		46405013246099DA00D810D2 /* libapple_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libapple_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46405015246099DA00D810D2 /* libapple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libapple.h; sourceTree = "<group>"; };
 		46405016246099DA00D810D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4640501E2461028C00D810D2 /* atomics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = atomics.h; path = ../build/atomics.h; sourceTree = "<group>"; };
+		4640501F2461028C00D810D2 /* pony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pony.h; path = ../build/pony.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,8 @@
 		464F12B82454B3B600E54048 = {
 			isa = PBXGroup;
 			children = (
+				4640501E2461028C00D810D2 /* atomics.h */,
+				4640501F2461028C00D810D2 /* pony.h */,
 				46404FFD246076DB00D810D2 /* apple.h */,
 				46404FF7246076A100D810D2 /* src */,
 				46405004246098DC00D810D2 /* libapple-osx */,
@@ -104,6 +112,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4640500D246099A300D810D2 /* apple.h in Headers */,
+				464050202461028C00D810D2 /* atomics.h in Headers */,
+				464050222461028C00D810D2 /* pony.h in Headers */,
 				46405007246098DC00D810D2 /* libapple_osx.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +123,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				46405017246099DA00D810D2 /* libapple.h in Headers */,
+				464050212461028C00D810D2 /* atomics.h in Headers */,
+				464050232461028C00D810D2 /* pony.h in Headers */,
 				4640501D24609A2200D810D2 /* apple.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

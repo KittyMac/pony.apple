@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface libapple : NSObject
+#include "atomics.h"
+#include "pony.h"
 
-@end
+void pony_retain_actor(pony_ctx_t * ctx, void * obj);
+void pony_release_actor(pony_ctx_t * ctx, void * obj);

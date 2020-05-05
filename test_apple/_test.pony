@@ -4,6 +4,8 @@ use "files"
 use "flow"
 use "utility"
 
+use "apple"
+
 use "framework:Foundation"
 use "framework:AppKit" if osx
 
@@ -32,6 +34,14 @@ actor Main is TestList
 	fun tag tests(test: PonyTest) =>
 		test(_TestApple1)
     test(_TestApple2)
+  
+  fun @runtime_override_defaults(rto: RuntimeOptions) =>
+    rto.ponyanalysis = 0
+    rto.ponynoscale = true
+    rto.ponynoblock = true
+    rto.ponymainthread = true
+    rto.ponygcinitial = 0
+    rto.ponygcfactor = 1.0
 
 
 class iso _TestApple1 is UnitTest
@@ -48,7 +58,7 @@ class iso _TestApple1 is UnitTest
       })
 
 class iso _TestApple2 is UnitTest
-	fun name(): String => "Test 1: url download fail"
+	fun name(): String => "Test 2: url download fail"
 
 	fun apply(h: TestHelper) =>
       h.long_test(30_000_000_000)

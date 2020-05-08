@@ -50,7 +50,7 @@ class iso _TestApple1 is UnitTest
 	fun apply(h: TestHelper) =>
       h.long_test(30_000_000_000)
       
-      URLDownload.get("https://i.ytimg.com/vi/SBjCQX7Lh2Q/maxresdefault.jpg", {(result:URLDownloadResult val) =>        
+      URLDownload.get("https://i.ytimg.com/vi/SBjCQX7Lh2Q/maxresdefault.jpg", None, {(result:URLDownloadResult val) =>        
         match result
         | URLDownloadError => h.complete(false)
         | let _:Array[U8] val => h.complete(true)
@@ -63,7 +63,7 @@ class iso _TestApple2 is UnitTest
 	fun apply(h: TestHelper) =>
       h.long_test(30_000_000_000)
 
-      URLDownload.get("http://lakdhsbgfklwsadbhfd.com/SBjCQX7Lh2Q/lkjdafbgojbds.jpg", {(result:URLDownloadResult val) =>        
+      URLDownload.get("http://lakdhsbgfklwsadbhfd.com/SBjCQX7Lh2Q/lkjdafbgojbds.jpg", None, {(result:URLDownloadResult val) =>        
         match result
         | let err:URLDownloadError val => h.complete(err == "A server with the specified hostname could not be found.")
         | let _:Array[U8] val => h.complete(false)

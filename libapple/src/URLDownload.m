@@ -10,11 +10,30 @@
 #include "apple.h"
 #include "libapple.h"
 
-void Apple_URLDownload(String * uuid, String * url, apple_URLDownload * sender) {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithUTF8String:String_val_cstring_o(url)]]];
+void Apple_URLDownload(apple_URLDownload * sender, String * uuid, String * method, String * body, String * url) {
+    NSString * urlString = [NSString stringWithUTF8String:String_val_cstring_o(url)];
+    NSString * methodString = [NSString stringWithUTF8String:String_val_cstring_o(method)];
+    NSString * bodyString = [NSString stringWithUTF8String:String_val_cstring_o(body)];
     
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]
+                                                              cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                          timeoutInterval:30];
+
+    NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+    [request setValue:[NSString stringWithFormat:@"application/json; charset=%@", charset] forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"0" forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"" forHTTPHeaderField:@"Accept-Encoding"];
+    [request setValue:@"" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"" forHTTPHeaderField:@"Accept-Language"];
+    
+    [request setHTTPMethod:methodString];
+    
+    if ([bodyString length] > 0) {
+        [request setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setValue:[NSString stringWithFormat:@"%lu", [bodyString length]] forHTTPHeaderField:@"Content-Length"];
+    }
+        
     pony_ctx_t * ctx = pony_ctx();
-    
     pony_retain_actor(ctx, sender);
     
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -30,3 +49,4 @@ void Apple_URLDownload(String * uuid, String * url, apple_URLDownload * sender) 
         });
     }] resume];
 }
+
